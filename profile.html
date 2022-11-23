@@ -1,0 +1,615 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" href="./static/media/logo.png ">
+  <title>Retro|Health & Fitness</title>
+
+
+
+
+  <style>
+    * {
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+  </style>
+
+<body onload="initClock()">
+  <div class="body_wrapper">
+    <nav>
+      <div class="logo"><img src="./static/media/logo.png" alt=""></div>
+      <ul>
+
+        <li><a href="dashboard.html" id="dashboard_link" >
+            <i class="bi bi-speedometer2 "></i>
+            <p class="item">Dashboard</p>
+          </a></li>
+
+        <li><a href="people_member.html" id="people_link">
+            <i class="bi bi-people"></i>
+            <p class="item">People</p>
+          </a></li>
+
+        <li><a href="members_invoices.html" id="invoices_link">
+            <i class="bi bi-receipt-cutoff"></i>
+            <p class="item">Invoices</p>
+          </a></li>
+
+        <li><a href="broadcast.html" id="broadcast_link">
+            <i class="bi bi-broadcast"></i>
+            <p class="item">Broadcast</p>
+          </a></li>
+
+          <!-- <li><a href="store.html">
+              <i class="bi bi-shop-window"></i>
+              <p class="item">Store</p>
+            </a></li> -->
+
+        <!-- <li><a href="calender.html">
+            <i class="bi bi-calendar2-event"></i>
+            <p class="item">Calender</p>
+          </a></li> -->
+
+        <!-- <li><a href="analysis.html">
+            <i class="bi bi-clipboard-data"></i>
+            <p class="item">Analysis</p>
+          </a></li> -->
+          
+        <li><a href="misc.html" id="misc_link">
+            <i class="bi bi-box-seam"></i>
+            <p class="item">Misc.</p>
+          </a></li>
+
+      </ul>
+    </nav>
+    <div class="content_wrapper">
+      <header>
+        <div class="logo2 ">
+          <img src="./static/media/logo2.png" alt="">
+        </div>
+        <div>
+          <div class="day_time">
+
+            <!--digital clock start-->
+            <div class="datetime">
+              <div class="date">
+                <div>
+                <span id="dayname">Day</span>
+                </div>
+                  <span id="month">Month</span>
+                
+                <span id="daynum">00</span>,
+                <span id="year">Year</span>
+              </div>
+              <div class="time">
+        <span id="hour">00</span>:
+        <span id="minutes">00</span>:
+        <span id="seconds">00</span>
+        <span id="period">AM</span>
+      </div>
+            </div>
+            <!--digital clock end-->
+
+            <script type="text/javascript">
+              function updateClock() {
+                var now = new Date();
+                var dname = now.getDay(),
+                  mo = now.getMonth(),
+                  dnum = now.getDate(),
+                  yr = now.getFullYear(),
+                  hou = now.getHours(),
+                  min = now.getMinutes(),
+                  sec = now.getSeconds(),
+                  pe = "AM";
+
+                if (hou >= 12) {
+                  pe = "PM";
+                }
+                if (hou == 0) {
+                  hou = 12;
+                }
+                if (hou > 12) {
+                  hou = hou - 12;
+                }
+
+                Number.prototype.pad = function (digits) {
+                  for (var n = this.toString(); n.length < digits; n = 0 + n);
+                  return n;
+                }
+
+                var months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"];
+                var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+                // var ids = ["dayname", "month", "daynum", "year"];
+                var values = [week[dname] + "", months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+                for (var i = 0; i < ids.length; i++)
+                  document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+              }
+
+              function initClock() {
+                updateClock();
+                window.setInterval("updateClock()", 1);
+              }
+            </script>
+
+          </div>
+          <div class="profile_icon">
+            ava
+          </div>
+        </div>
+      </header>
+      <div class="content_container">
+
+
+
+        
+
+<div class="content" style="height: calc(100% - 10px) ;">
+  <div class="profile_content">
+      <div class="colored_wrapper">
+          <div class="container">
+              <img class="profile_photo" id="input_image_preview" >
+              <!-- </div> -->
+              <h2>Muhammad Ahmad</h2>
+              <h4>Member ID # <span class="grey">123456</span></h4>
+              <div class="line"></div>
+              <!-- <h4>Barcode ID# <span class="grey">343231</span></h4> -->
+              <div class="option_container">
+                  <button onclick="open_message()"><i class="bi bi-chat"></i></button>
+                  <button onclick="open_email()"><i class="bi bi-envelope"></i></button>
+                  <button onclick="open_invoice()"><i class="bi bi-plus"></i></button>
+              </div>
+              <div class="option_container">
+                  <div>Text Message</div>
+                  <div>Send Email</div>
+                  <div>Add Invoice</div>
+              </div>
+              <div class="heading">Billing Details</div>
+              <div class="table_wrapper">
+
+                  <table>
+                      <tr>
+                          <th>Amount</th>
+                          <th>Method</th>
+                          <th>Payment Date</th>
+                      </tr>
+                      <tr>
+                          <td>$100.00</td>
+                          <td>Visa</td>
+                          <td>2021-01-01</td>
+                      </tr>
+                      <tr>
+                          <td>$100.00</td>
+                          <td>Visa</td>
+                          <td>2021-01-01</td>
+                      </tr>
+                      <tr>
+                          <td>$100.00</td>
+                          <td>Visa</td>
+                          <td>2021-01-01</td>
+                      </tr>
+                      <tr>
+                          <td>$100.00</td>
+                          <td>Visa</td>
+                          <td>2021-01-01</td>
+                      </tr>
+                      <tr>
+                          <td>$100.00</td>
+                          <td>Visa</td>
+                          <td>2021-01-01</td>
+                      </tr>
+                  </table>
+              </div>
+          </div>
+      </div>
+      <div class="colorless_wrapper">
+          <div class="horizontal" style="width:90%">
+              <div>
+                  <button id="activate_button" class="green" onclick="activate()"><i
+                          class="bi bi-power"><span>Activate</span></i></button>
+                  <button id="deactivate_button" class="red" onclick="deactivate()" style="display:none;"><i
+                          class="bi bi-power"><span>Deactivate</span></i></button>
+                  <button id="edit_button" onclick="edit()"><i class="bi bi-pen"><span>Edit</span></i></button>
+                  <button id="save_button" onclick="save()" style="display:none;"><i
+                          class="bi bi-check2-square"><span>Save</span></i></button>
+                  <h3><i class="status" id="status">Inactive</i></h3>
+                  <p><span>*</span>To Edit The Information press Edit button and than Save</p>
+
+
+
+
+              </div>
+          </div>
+
+          <label for="Name">Name: <span>*</span></label>
+          <div class="horizontal" style="width:90%">
+              <input id="input" disabled value="" type="text" placeholder="First Name" required>
+              <input id="input" disabled value="" type="text" placeholder="Last Name">
+          </div>
+
+          <label for="Email">Email: <span>*</span></label>
+          <input id="input" disabled value="" type="email" placeholder="Email" required>
+
+          <label for="Phone">Phone: <span>*</span></label>
+          <input id="input" disabled value="" type="tel" placeholder="Phone" required>
+
+          <label for="Address">Address: <span>*</span></label>
+          <div class="horizontal" style="width:90%">
+              <input id="input" disabled value="" type="text" placeholder="State" required>
+              <input id="input" disabled value="" type="text" placeholder="City" required>
+              <input id="input" disabled value="" type="text" placeholder="Street(Optional)">
+
+          </div>
+
+          <div class="horizontal" style="width:90%">
+              <div>
+                  <label for="joiningdate">Joining Date <span>*</span></label>
+                  <input id="input" disabled value="" type="date" placeholder="Joining Date" required>
+              </div>
+              <div>
+                  <label for="birthday">Birthday</label>
+                  <input id="input" disabled value="" type="date" placeholder="Birthday">
+              </div>
+          </div>
+
+          <div class="finger_wrapper">
+              <div class="scanners">
+
+
+                  <button href="apple" class="finger_container">
+                      <img src="data:image/jpeg;base64,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"
+                          alt="finger">
+                  </button>
+                  <div style="display:flex; flex-direction:column; justify-content: flex-end;">
+                      <button disabled id="input" class="biometeric_button" onclick="openFaceScanner()">Edit
+                          Biometeric</button>
+                      <button disabled id="input" class="biometeric_button" onclick="openFaceScanner()">Edit
+                          Photo</button>
+                  </div>
+
+              </div>
+              <div class="communication_container">
+                  <div class="messages">
+                      <h4>Messages</h4>
+                      <table>
+                          <tr>
+                              <td><a href="alpha">
+                                      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus unde nihil
+                                          sint quasi mollitia vitae. Dignissimos, fuga ea. Architecto iste odio quidem
+                                          et. Debitis ratione mollitia molestiae itaque repellendus, quod atque fuga
+                                          consequuntur quis culpa id in qui animi modi neque labore necessitatibus
+                                          temporibus saepe veniam. Laudantium dolor iste ut? some random meassage</p>
+                                  </a></td>
+                              <td>mm/dd/yy hh:mm</td>
+                          </tr>
+                          <tr>
+                              <td><a href="alpha">
+                                      <p>some random meassage</p>
+                                  </a></td>
+                              <td>mm/dd/yy hh:mm</td>
+                          </tr>
+                          <tr>
+                              <td><a href="alpha">
+                                      <p>some random meassage</p>
+                                  </a></td>
+                              <td>mm/dd/yy hh:mm</td>
+                          </tr>
+                          <tr>
+                              <td><a href="alpha">
+                                      <p>some random meassage</p>
+                                  </a></td>
+                              <td>mm/dd/yy hh:mm</td>
+                          </tr>
+                          <tr>
+                              <td><a href="alpha">
+                                      <p>some random meassage</p>
+                                  </a></td>
+                              <td>mm/dd/yy hh:mm</td>
+                          </tr>
+                      </table>
+                  </div>
+                  <div class="Emails">
+                      <h4>Emails</h4>
+                      <table>
+                          <tr>
+                              <td><a href="alpha">
+                                      <p>some random meassage</p>
+                                  </a></td>
+                              <td>mm/dd/yy hh:mm</td>
+                          </tr>
+                          <tr>
+                              <td><a href="alpha">
+                                      <p>some random meassage</p>
+                                  </a></td>
+                              <td>mm/dd/yy hh:mm</td>
+                          </tr>
+                          <tr>
+                              <td><a href="alpha">
+                                      <p>some random meassage</p>
+                                  </a></td>
+                              <td>mm/dd/yy hh:mm</td>
+                          </tr>
+                          <tr>
+                              <td><a href="alpha">
+                                      <p>some random meassage</p>
+                                  </a></td>
+                              <td>mm/dd/yy hh:mm</td>
+                          </tr>
+                          <tr>
+                              <td><a href="alpha">
+                                      <p>some random meassage</p>
+                                  </a></td>
+                              <td>mm/dd/yy hh:mm</td>
+                          </tr>
+                      </table>
+                  </div>
+              </div>
+
+          </div>
+
+      </div>
+  </div>
+
+  <!-- face scaner popup -->
+  <div class="face_scanner_wrapper" id="face_scanner_wrapper">
+      <div class="face_scanner" id="face_scanner">
+
+          <div id="horizontal" style="width:90%">
+              <div class="scan_preview_containers">
+                  <button type="button" id="start-camera">Start Camera</button>
+                  <video id="video" width="320" height="240" autoplay></video>
+              </div>
+
+              <div class="scan_preview_containers">
+                  <button type="button" id="click-photo">Click Photo</button>
+                  <canvas id="canvas" width="320" height="240"></canvas>
+              </div>
+
+          </div>
+
+
+
+
+
+
+          <script>
+
+              let camera_button = document.querySelector("#start-camera");
+              let video = document.querySelector("#video");
+              let click_button = document.querySelector("#click-photo");
+              let canvas = document.querySelector("#canvas");
+
+              camera_button.addEventListener('click', async function () {
+                  video.style.backgroundColor = "#00000050";
+                  let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                  video.srcObject = stream;
+
+              });
+
+              click_button.addEventListener('click', function () {
+                  canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                  let image_data_url = canvas.toDataURL('image/jpeg');
+
+                  // data url of the image
+                  console.log(image_data_url);
+              });
+
+              function enableclickphoto() {
+                  document.getElementById("click-photo").disabled = false;
+              }
+
+              function enablesavephoto() {
+                  document.getElementById("save-photo").disabled = false;
+              }
+
+          </script>
+
+          <div class="button_container">
+
+              <button id="set_image" type="button" onclick="saveImage()">Save Image</button>
+              <button id="set_image" class="red" type="button" onclick="closeFaceScanner()">Close</button>
+
+              <script>
+                  var face_scanner = document.getElementById("face_scanner")
+                  var face_scanner_wrapper = document.getElementById("face_scanner_wrapper")
+
+                  function closeFaceScanner() {
+                      face_scanner_wrapper.style.display = "none";
+                  }
+
+                  function openFaceScanner() {
+                      face_scanner_wrapper.style.display = "flex";
+                  }
+
+                  function saveImage() {
+                      document.getElementById("input_image_preview").src = document.getElementById("canvas").toDataURL('image/jpeg');
+                      closeFaceScanner();
+                      document.getElementById("input_image_preview").style.display = "block";
+                  }
+              </script>
+          </div>
+
+      </div>
+  </div>
+
+  <!-- text message popup -->
+  <div class="popup_wrapper" id="message">
+      <form class="popup" >
+          <div class="close" onclick="close_popupup()">X</div>
+          <div class="heading">Send Text Message</div>
+          <label for="to">To:</label>
+          <input type="text" placeholder="Name" value="Muhammad Ahmad" disabled>
+          <label for="phone">Number</label>
+          <input type="text" placeholder="Phone Number" value="+92-303-5106242" disabled>
+          <label for="template">Template</label>
+          <select name="template" id="template">
+              <option value="">--Select Template to Autofill--</option>
+              <option value="1">Template 1</option>
+              <option value="2">Template 2</option>
+              <option value="3">Template 3</option>
+              <option value="4">Template 4</option>
+              <option value="5">Template 5</option>
+          </select>
+          <label for="message">Message:</label>
+          <textarea name="message" id="" cols="30" rows="10"></textarea>
+          <button>Send</button>
+      </form>
+
+  </div>
+
+  <!-- Send Emails popup -->
+
+  <div class="popup_wrapper" id="email">
+      <form class="popup" >
+          <div class="close" onclick="close_popupup()">X</div>
+          <div class="heading">Send Email</div>
+          <label for="to">To:</label>
+          <input type="text" placeholder="Name" value="Muhammad Ahmad" disabled>
+          <label for="email">Email Adress:</label>
+          <input type="text" placeholder="Phone Number" value="mka930123@gmail.com" disabled>
+          <label for="template">Template:</label>
+          <select name="template" id="template">
+              <option value="">--Select Template to Autofill--</option>
+              <option value="1">Template 1</option>
+              <option value="2">Template 2</option>
+              <option value="3">Template 3</option>
+              <option value="4">Template 4</option>
+              <option value="5">Template 5</option>
+          </select>
+          <label for="subject">Subject:</label>
+          <input type="text" placeholder="Subject">
+          <label for="body">Body:</label>
+          <textarea name="body" id="" cols="30" rows="15"></textarea>
+          <button>Send</button>
+      </form>
+
+  </div>
+  <!-- Add Invoice popup -->
+
+  <div class="popup_wrapper" id="invoice">
+      <form class="popup" >
+          <div class="close" onclick="close_popupup()">X</div>
+          <div class="heading">Add Invoice</div>
+          <label for="for">For:</label>
+          <input type="text" placeholder="Name" value="Muhammad Ahmad" disabled>
+          <label for="membership">Membership</label>
+          <select name="plan" id="plan">
+              <option value="">--Select Membership--</option>
+              <option value="1">1 Month</option>
+              <option value="3">3 Months</option>
+              <option value="6">6 Months</option>
+              <option value="12">12 Months</option>
+          </select>
+          <label for="payment">Payment Method:</label>
+          <select name="payment" id="payment">
+              <option value="">--Select Payment Method--</option>
+              <option value="1">Cash</option>
+              <option value="2">Credit Card</option>
+              <option value="3">Debit Card</option>
+              <option value="4">Bank Transfer</option>
+          </select>
+          <label for="note">Note</label>
+          <textarea name="" id="" cols="10" rows="5" placeholder="Additional notes if any"></textarea>
+          <button>Send</button>
+      </form>
+
+
+  <!-- scripts -->
+  <script>
+      function activate() {
+          document.getElementById("activate_button").style.display = "none";
+          document.getElementById("deactivate_button").style.display = "inline-block";
+          document.getElementById("status").innerHTML = "Active";
+          document.getElementById("status").style.color = "#7de674";
+      }
+
+      function deactivate() {
+          document.getElementById("activate_button").style.display = "inline-block";
+          document.getElementById("deactivate_button").style.display = "none";
+          document.getElementById("status").innerHTML = "Inactive";
+          document.getElementById("status").style.color = "#dc143c";
+      }
+
+      function edit() {
+          document.getElementById("edit_button").style.display = "none";
+          document.getElementById("save_button").style.display = "inline-block";
+          document.querySelectorAll("#input").forEach(function (input) {
+              input.disabled = false;
+          });
+
+      }
+
+      function save() {
+          document.getElementById("edit_button").style.display = "inline-block";
+          document.getElementById("save_button").style.display = "none";
+          document.querySelectorAll("#input").forEach(function (input) {
+              input.disabled = true;
+          });
+      }
+      function close_popupup() {
+          document.querySelector(".popup_wrapper").style.display = "none ";
+          document.getElementById("message").style.display = "none";
+          document.getElementById("email").style.display = "none";
+          document.getElementById("invoice").style.display = "none";
+      }
+      function open_message() {
+          // open_popupup();
+          document.getElementById("message").style.display = "flex";
+      }
+      function open_email() {
+          // open_popupup();
+          document.getElementById("email").style.display = "flex";
+      }
+      function open_invoice() {
+          // open_popupup();
+          document.getElementById("invoice").style.display = "flex";
+      }
+  </script>
+
+
+<script>
+  document.getElementById("people_link").classList.add("active");
+</script>
+      </div>
+    </div>
+
+    <script>
+
+      const date = new Date();
+      document.getElementById("date").innerHTML = date;
+    </script>
+
+    <script>
+      $(function () {
+        var current = location.pathname;
+        $('nav ul li a').each(function () {
+          var $this = $(this);
+          // if the current path is like this link, make it active
+          if ($this.attr('href').indexOf(current) != -1) {
+            $this.addClass('active');
+          }
+        })
+      })
+
+   
+
+
+    </script>
+
+
+</body>
+
+</html>

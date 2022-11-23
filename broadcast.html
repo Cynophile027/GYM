@@ -1,0 +1,504 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" href="./static/media/logo.png ">
+  <title>Retro|Health & Fitness</title>
+
+
+
+
+  <style>
+    * {
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+  </style>
+
+<body onload="initClock()">
+  <div class="body_wrapper">
+    <nav>
+      <div class="logo"><img src="./static/media/logo.png" alt=""></div>
+      <ul>
+
+        <li><a href="dashboard.html" id="dashboard_link" >
+            <i class="bi bi-speedometer2 "></i>
+            <p class="item">Dashboard</p>
+          </a></li>
+
+        <li><a href="people_member.html" id="people_link">
+            <i class="bi bi-people"></i>
+            <p class="item">People</p>
+          </a></li>
+
+        <li><a href="members_invoices.html" id="invoices_link">
+            <i class="bi bi-receipt-cutoff"></i>
+            <p class="item">Invoices</p>
+          </a></li>
+
+        <li><a href="broadcast.html" id="broadcast_link">
+            <i class="bi bi-broadcast"></i>
+            <p class="item">Broadcast</p>
+          </a></li>
+
+          <!-- <li><a href="store.html">
+              <i class="bi bi-shop-window"></i>
+              <p class="item">Store</p>
+            </a></li> -->
+
+        <!-- <li><a href="calender.html">
+            <i class="bi bi-calendar2-event"></i>
+            <p class="item">Calender</p>
+          </a></li> -->
+
+        <!-- <li><a href="analysis.html">
+            <i class="bi bi-clipboard-data"></i>
+            <p class="item">Analysis</p>
+          </a></li> -->
+          
+        <li><a href="misc.html" id="misc_link">
+            <i class="bi bi-box-seam"></i>
+            <p class="item">Misc.</p>
+          </a></li>
+
+      </ul>
+    </nav>
+    <div class="content_wrapper">
+      <header>
+        <div class="logo2 ">
+          <img src="./static/media/logo2.png" alt="">
+        </div>
+        <div>
+          <div class="day_time">
+
+            <!--digital clock start-->
+            <div class="datetime">
+              <div class="date">
+                <div>
+                <span id="dayname">Day</span>
+                </div>
+                  <span id="month">Month</span>
+                
+                <span id="daynum">00</span>,
+                <span id="year">Year</span>
+              </div>
+              <div class="time">
+        <span id="hour">00</span>:
+        <span id="minutes">00</span>:
+        <span id="seconds">00</span>
+        <span id="period">AM</span>
+      </div>
+            </div>
+            <!--digital clock end-->
+
+            <script type="text/javascript">
+              function updateClock() {
+                var now = new Date();
+                var dname = now.getDay(),
+                  mo = now.getMonth(),
+                  dnum = now.getDate(),
+                  yr = now.getFullYear(),
+                  hou = now.getHours(),
+                  min = now.getMinutes(),
+                  sec = now.getSeconds(),
+                  pe = "AM";
+
+                if (hou >= 12) {
+                  pe = "PM";
+                }
+                if (hou == 0) {
+                  hou = 12;
+                }
+                if (hou > 12) {
+                  hou = hou - 12;
+                }
+
+                Number.prototype.pad = function (digits) {
+                  for (var n = this.toString(); n.length < digits; n = 0 + n);
+                  return n;
+                }
+
+                var months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"];
+                var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+                // var ids = ["dayname", "month", "daynum", "year"];
+                var values = [week[dname] + "", months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+                for (var i = 0; i < ids.length; i++)
+                  document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+              }
+
+              function initClock() {
+                updateClock();
+                window.setInterval("updateClock()", 1);
+              }
+            </script>
+
+          </div>
+          <div class="profile_icon">
+            ava
+          </div>
+        </div>
+      </header>
+      <div class="content_container">
+
+        <div class="page_title">
+          <h1>Broadcast</h1>
+          <div class="filters">
+              <a href="">Emails</a>
+              <a href="">Text&nbsp;Messages</a>
+              <a href="">All</a>
+              <i class="bi bi-search"></i>
+          </div>
+      </div>
+      <div class="links">
+          <!-- <a href="">Email&nbsp;Broadcast</a> -->
+          <!-- <a href="">Text&nbsp;Message&nbsp;Broadcast</a> -->
+          <a href="broadcast.html" class="active">Campaigns</a>
+          <a href="templates.html">Templates</a>
+          <!-- <a href="">Subscribers Lists</a> -->
+          <!-- <a href="">Summary</a> -->
+      </div>
+      <div class="content">
+      
+          <button class="addbtn" onclick="open_new_campaign()"><i class="fa fa-plus fa-3x"></i></button>
+      
+      
+          <div class="container" style="display: block !important">
+      
+              <div class="filterDiv colors smsBtn">
+                  <button class="campaign_wrapper smsBtn" onclick="open_sms_campaign()">
+                      <table>
+                          <tr>
+                              <td>Winter Sale!</td>
+                              <td>SMS Campaign</td>
+                              <td>Completed</td>
+                              <td>22/11/2022</td>
+                          </tr>
+                      </table>
+                  </button>
+              </div>
+      
+      
+              <div class="filterDiv colors smsBtn">
+                  <button class="campaign_wrapper emailBtn" onclick="open_campaign()">
+                      <table>
+                          <tr>
+                              <td>Winter Sale!</td>
+                              <td>Email Campaign</td>
+                              <td>Completed</td>
+                              <td>22/11/2022</td>
+                          </tr>
+                      </table>
+                  </button>
+              </div>
+      
+              
+          </div>
+      
+      
+      </div>
+      <!-- Start new Campaign -->
+      
+      <div class="popup_wrapper" id="new_campaign">
+          <form class="popup">
+              <div class="close" onclick="close_new_campaign()">X</div>
+              <div class="heading">Initiate New Campaign</div>
+              <label for="name">Name:</label>
+              <input type="text" id="name" name="name" placeholder="Enter Campaign Name" required autocomplete="off">
+              <label for="type">Type:</label>
+              <select name="type" id="type" required>
+                  <option value="">--Select Type--</option>
+                  <option value="email">Email</option>
+                  <option value="sms">SMS</option>
+              </select>
+              <label for="template">Templates:</label>
+              <select name="type" id="type" required>
+                  <option value="blank">Blank</option>
+                  <option value="winter_sale">Winter Sale</option>
+                  <option value="template2">Template 2</option>
+                  <option value="template3">Template 3</option>
+                  <option value="template4">Template 4</option>
+                  
+              </select>
+              <label for="subject">Subject:</label>
+              <input type="text" id="subject" name="subject" placeholder="Only for Emails" value="" autocomplete="off">
+              <label for="body">Body:</label>
+              <textarea name="body" id="body" cols="30" rows="10" required></textarea>
+              <button>Initiate</button>
+        
+      
+      
+          </form>
+      
+      </div>
+      
+      
+      
+      
+      <!--open campaign popup -->logo
+      <div class="popup_wrapper" id="campaign_detail">
+          <form class="popup">
+              <div class="close" onclick="close_popupup()">X</div>
+              <div class="heading">Email Campaign</div>
+              <h3 style="color:#656565 ;text-align:center; border-bottom: 1px solid #3f3f3f;padding-bottom: 10px; ">Winter
+                  Sale!</h3>
+              <div class="horizontal">
+                  <p><span>TYPE</span>:Email Campaign</p>
+                  <p><span>CREATED</span>:22/11/2022</p>
+              </div>
+      
+              <label for="subject">Subject:</label>
+              <input type="text" id="subject" name="subject" value="Inform user about Winter Sale">
+              <label for="body">Body:</label>
+              <textarea name="body" id="body" cols="30" rows="10" disabled>
+                  Lorem Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur animi, accusantium magnam autem aliquam ipsa corporis id pariatur minima eligendi impedit aut reprehenderit debitis et fugit eaque, quam, nam placeat nulla incidunt totam cumque tempore. Exercitationem tenetur atque reiciendis totam necessitatibus repellendus iste aliquid consequuntur sequi nobis, ipsam cumque distinctio. Sit repellendus officia libero, necessitatibus ducimus fuga officiis voluptate facere nobis atque ipsum deserunt dicta magnam, sequi non provident reprehenderit illo odio. Vero voluptas minus odio deserunt facere mollitia nemo, tenetur expedita excepturi unde obcaecati officia inventore at minima, laudantium ducimus animi asperiores voluptates iure voluptatem. Qui facere quibusdam iure debitis laborum facilis corrupti fugit! Soluta nihil laboriosam ad odio, quod sequi minus cumque quidem error, possimus id nesciunt quia placeat commodi perferendis, dicta eius? Quos molestias odio dolor sint, eligendi numquam commodi quidem, nemo deserunt ex harum saepe officia ipsam et ratione, quisquam at aperiam? Odio reiciendis nemo delectus libero voluptates odit, ut eos nostrum praesentium molestiae perspiciatis ducimus tempore ipsa? Sed in consequatur ea obcaecati. Sequi tempora incidunt fugiat est odit! Perferendis sapiente dolorem doloremque ut laboriosam veniam ex, qui unde repellat facere incidunt, fugit rerum. Odio, porro officia aut quas molestias harum, placeat repellendus unde tempore obcaecati id nisi? Consectetur ad amet, perspiciatis et molestiae unde ut eum dolorem officia sunt minus repellendus odit molestias porro architecto laborum accusantium rerum vitae ullam culpa tenetur sed possimus recusandae? Non, sint et natus beatae blanditiis laboriosam quisquam fugiat dicta, accusamus molestias veritatis eligendi mollitia distinctio quos ipsum dolores, delectus maxime excepturi veniam ipsa sapiente possimus suscipit porro. Culpa animi saepe illo adipisci sapiente inventore similique aspernatur quae error autem blanditiis possimus perspiciatis earum, tempora dolore sed modi recusandae tenetur suscipit quibusdam fuga quia, nobis placeat! Fugit sequi nulla quod sed. Odit soluta quibusdam quos officia saepe et itaque cupiditate similique, doloribus consequatur dolore nisi corrupti fugit ipsum! Nostrum voluptatem, odio perspiciatis iure, libero sit eum adipisci architecto maiores consequatur minus dolor nesciunt ea accusamus facilis, possimus distinctio. Exercitationem neque cumque, vitae error illum eaque quos rerum, sint voluptate fugit enim quisquam sapiente quas mollitia nam amet tempora vero praesentium! Cumque reiciendis doloribus, rem quisquam iusto reprehenderit voluptatum quam. Nisi inventore est consectetur officia! Possimus amet molestiae nulla dolor sint, optio accusantium alias debitis eveniet et modi praesentium quaerat consectetur laudantium nisi quisquam harum vero obcaecati? Suscipit reprehenderit rem cupiditate nulla, unde qui tempore, quisquam ratione vero error ex eos! ipsum dolor sit amet consectetur adipisicing elit. Saepe id minima tempora sapiente ut tenetur, nobis magni distinctio nam? Possimus aperiam accusantium ut temporibus necessitatibus obcaecati corporis nesciunt provident. Rem?
+              </textarea>
+              <label for="sent_to">Sent to:</label>
+              <div class="table_wrapper" style="width:100%;">
+                  <table>
+                      <tr>
+                          <th>Subscriber</th>
+                          <th>email</th>
+                          <th>Staturs</th>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                  </table>
+      
+              </div>
+      
+      
+          </form>
+      
+      </div>
+      
+      
+      
+      <!--open SMS campaign popup -->
+      <div class="popup_wrapper" id="sms_campaign_detail">
+          <form class="popup">
+              <div class="close" onclick="close_sms_popupup()">X</div>
+              <div class="heading">SMS Campaign</div>
+              <h3 style="color:#656565 ;text-align:center; border-bottom: 1px solid #3f3f3f;padding-bottom: 10px; ">Winter
+                  Sale!</h3>
+              <div class="horizontal">
+                  <p><span>TYPE</span>:SMS Campaign</p>
+                  <p><span>CREATED</span>:22/11/2022</p>
+              </div>
+              <label for="body">Body:</label>
+              <textarea name="body" id="body" cols="30" rows="10" disabled>
+                  Lorem Lorem, ipsum dolor sit amet consectetur adipisicing elit. Consequuntur animi, accusantium magnam autem aliquam ipsa corporis id pariatur minima eligendi impedit aut reprehenderit debitis et fugit eaque, quam, nam placeat nulla incidunt totam cumque tempore. Exercitationem tenetur atque reiciendis totam necessitatibus repellendus iste aliquid consequuntur sequi nobis, ipsam cumque distinctio. Sit repellendus officia libero, necessitatibus ducimus fuga officiis voluptate facere nobis atque ipsum deserunt dicta magnam, sequi non provident reprehenderit illo odio. Vero voluptas minus odio deserunt facere mollitia nemo, tenetur expedita excepturi unde obcaecati officia inventore at minima, laudantium ducimus animi asperiores voluptates iure voluptatem. Qui facere quibusdam iure debitis laborum facilis corrupti fugit! Soluta nihil laboriosam ad odio, quod sequi minus cumque quidem error, possimus id nesciunt quia placeat commodi perferendis, dicta eius? Quos molestias odio dolor sint, eligendi numquam commodi quidem, nemo deserunt ex harum saepe officia ipsam et ratione, quisquam at aperiam? Odio reiciendis nemo delectus libero voluptates odit, ut eos nostrum praesentium molestiae perspiciatis ducimus tempore ipsa? Sed in consequatur ea obcaecati. Sequi tempora incidunt fugiat est odit! Perferendis sapiente dolorem doloremque ut laboriosam veniam ex, qui unde repellat facere incidunt, fugit rerum. Odio, porro officia aut quas molestias harum, placeat repellendus unde tempore obcaecati id nisi? Consectetur ad amet, perspiciatis et molestiae unde ut eum dolorem officia sunt minus repellendus odit molestias porro architecto laborum accusantium rerum vitae ullam culpa tenetur sed possimus recusandae? Non, sint et natus beatae blanditiis laboriosam quisquam fugiat dicta, accusamus molestias veritatis eligendi mollitia distinctio quos ipsum dolores, delectus maxime excepturi veniam ipsa sapiente possimus suscipit porro. Culpa animi saepe illo adipisci sapiente inventore similique aspernatur quae error autem blanditiis possimus perspiciatis earum, tempora dolore sed modi recusandae tenetur suscipit quibusdam fuga quia, nobis placeat! Fugit sequi nulla quod sed. Odit soluta quibusdam quos officia saepe et itaque cupiditate similique, doloribus consequatur dolore nisi corrupti fugit ipsum! Nostrum voluptatem, odio perspiciatis iure, libero sit eum adipisci architecto maiores consequatur minus dolor nesciunt ea accusamus facilis, possimus distinctio. Exercitationem neque cumque, vitae error illum eaque quos rerum, sint voluptate fugit enim quisquam sapiente quas mollitia nam amet tempora vero praesentium! Cumque reiciendis doloribus, rem quisquam iusto reprehenderit voluptatum quam. Nisi inventore est consectetur officia! Possimus amet molestiae nulla dolor sint, optio accusantium alias debitis eveniet et modi praesentium quaerat consectetur laudantium nisi quisquam harum vero obcaecati? Suscipit reprehenderit rem cupiditate nulla, unde qui tempore, quisquam ratione vero error ex eos! ipsum dolor sit amet consectetur adipisicing elit. Saepe id minima tempora sapiente ut tenetur, nobis magni distinctio nam? Possimus aperiam accusantium ut temporibus necessitatibus obcaecati corporis nesciunt provident. Rem?
+              </textarea>
+              <label for="sent_to">Sent to:</label>
+              <div class="table_wrapper" style="width:100%;">
+                  <table>
+                      <tr>
+                          <th>Subscriber</th>
+                          <th>email</th>
+                          <th>Staturs</th>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                      <tr>
+                          <td>Muhammad Ahmad</td>
+                          <td>mka930213@gmail.com</td>
+                          <td>Delivered</td>
+                      </tr>
+                  </table>
+      
+              </div>
+      
+      
+          </form>
+      
+      </div>
+      
+      <script>
+          function open_campaign() {
+              document.getElementById("campaign_detail").style.display = "flex";
+          }
+          function close_popupup() {
+              document.getElementById("campaign_detail").style.display = "none";
+          }
+          function open_sms_campaign() {
+              document.getElementById("sms_campaign_detail").style.display = "flex";
+          }
+          function close_sms_popupup() {
+              document.getElementById("sms_campaign_detail").style.display = "none";
+          }
+          
+          function open_new_campaign() {
+              document.getElementById("new_campaign").style.display = "flex";
+          }
+          function close_new_campaign() {
+              document.getElementById("new_campaign").style.display = "none";
+          }new_campaign
+          
+      
+      </script>
+
+
+
+      </div>
+    </div>
+
+    <script>
+
+      const date = new Date();
+      document.getElementById("date").innerHTML = date;
+    </script>
+
+    <script>
+      $(function () {
+        var current = location.pathname;
+        $('nav ul li a').each(function () {
+          var $this = $(this);
+          // if the current path is like this link, make it active
+          if ($this.attr('href').indexOf(current) != -1) {
+            $this.addClass('active');
+          }
+        })
+      })
+
+   
+
+
+    </script>
+
+
+</body>
+
+</html>

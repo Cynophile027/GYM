@@ -1,0 +1,767 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" href="./static/media/logo.png ">
+  <title>Retro|Health & Fitness</title>
+
+
+
+
+  <style>
+    * {
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+  </style>
+
+<body onload="initClock()">
+  <div class="body_wrapper">
+    <nav>
+      <div class="logo"><img src="./static/media/logo.png" alt=""></div>
+      <ul>
+
+        <li><a href="dashboard.html" id="dashboard_link" >
+            <i class="bi bi-speedometer2 "></i>
+            <p class="item">Dashboard</p>
+          </a></li>
+
+        <li><a href="people_member.html" id="people_link">
+            <i class="bi bi-people"></i>
+            <p class="item">People</p>
+          </a></li>
+
+        <li><a href="members_invoices.html" id="invoices_link">
+            <i class="bi bi-receipt-cutoff"></i>
+            <p class="item">Invoices</p>
+          </a></li>
+
+        <li><a href="broadcast.html" id="broadcast_link">
+            <i class="bi bi-broadcast"></i>
+            <p class="item">Broadcast</p>
+          </a></li>
+
+          <!-- <li><a href="store.html">
+              <i class="bi bi-shop-window"></i>
+              <p class="item">Store</p>
+            </a></li> -->
+
+        <!-- <li><a href="calender.html">
+            <i class="bi bi-calendar2-event"></i>
+            <p class="item">Calender</p>
+          </a></li> -->
+
+        <!-- <li><a href="analysis.html">
+            <i class="bi bi-clipboard-data"></i>
+            <p class="item">Analysis</p>
+          </a></li> -->
+          
+        <li><a href="misc.html" id="misc_link">
+            <i class="bi bi-box-seam"></i>
+            <p class="item">Misc.</p>
+          </a></li>
+
+      </ul>
+    </nav>
+    <div class="content_wrapper">
+      <header>
+        <div class="logo2 ">
+          <img src="./static/media/logo2.png" alt="">
+        </div>
+        <div>
+          <div class="day_time">
+
+            <!--digital clock start-->
+            <div class="datetime">
+              <div class="date">
+                <div>
+                <span id="dayname">Day</span>
+                </div>
+                  <span id="month">Month</span>
+                
+                <span id="daynum">00</span>,
+                <span id="year">Year</span>
+              </div>
+              <div class="time">
+        <span id="hour">00</span>:
+        <span id="minutes">00</span>:
+        <span id="seconds">00</span>
+        <span id="period">AM</span>
+      </div>
+            </div>
+            <!--digital clock end-->
+
+            <script type="text/javascript">
+              function updateClock() {
+                var now = new Date();
+                var dname = now.getDay(),
+                  mo = now.getMonth(),
+                  dnum = now.getDate(),
+                  yr = now.getFullYear(),
+                  hou = now.getHours(),
+                  min = now.getMinutes(),
+                  sec = now.getSeconds(),
+                  pe = "AM";
+
+                if (hou >= 12) {
+                  pe = "PM";
+                }
+                if (hou == 0) {
+                  hou = 12;
+                }
+                if (hou > 12) {
+                  hou = hou - 12;
+                }
+
+                Number.prototype.pad = function (digits) {
+                  for (var n = this.toString(); n.length < digits; n = 0 + n);
+                  return n;
+                }
+
+                var months = ["January", "February", "March", "April", "May", "June", "July", "Augest", "September", "October", "November", "December"];
+                var week = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+                var ids = ["dayname", "month", "daynum", "year", "hour", "minutes", "seconds", "period"];
+                // var ids = ["dayname", "month", "daynum", "year"];
+                var values = [week[dname] + "", months[mo], dnum.pad(2), yr, hou.pad(2), min.pad(2), sec.pad(2), pe];
+                for (var i = 0; i < ids.length; i++)
+                  document.getElementById(ids[i]).firstChild.nodeValue = values[i];
+              }
+
+              function initClock() {
+                updateClock();
+                window.setInterval("updateClock()", 1);
+              }
+            </script>
+
+          </div>
+          <div class="profile_icon">
+            ava
+          </div>
+        </div>
+      </header>
+      <div class="content_container">
+
+        <div class="page_title">
+          <h1>People</h1>
+          <div class="filters">
+              <a href="">Active</a>
+              <a href="">Inactivate</a>
+              <a href="">All</a>
+              <i class="bi bi-search"></i>
+          </div>
+      </div>
+      <div class="links">
+          <a href="people_member.html" >Members</a>
+          <a href="people_employee.html" class="active">Employees</a>
+          <a href="">Activate&nbsp;All</a>
+          <a href="">Deactivate&nbsp;All</a>
+      </div>
+      <div class="content">
+          <button class="addbtn" onclick="openAddPerson()"><i class="fa fa-plus fa-3x"></i></button>
+      
+      
+          <div class="wrapper" style="height: calc(100% - 40px) !important ;padding: 0;">
+              <table>
+                  <tr class="transparent">
+                      <th>Member Id</th>
+                      <th>Barcode Id</th>
+                      <th>Name</th>
+                      <th>State</th>
+                      <th>City</th>
+                      <th>Street</th>
+                      <th>Phone #</th>
+                      <th>Email</th>
+                      <th>Tag</th>
+                      <th>Status</th>
+                  </tr>
+                  <tr class='clickable-row' data-href='url://sadasd.sad'>
+                      <td>1</td>
+                      <td>123456789</td>
+                      <td><a href="#"><a href="profile.html">John Doe</a></a></td>
+                      <td>California</td>
+                      <td>Los Angeles</td>
+                      <td>1234 Main St</td>
+                      <td>123-456-7890</td>
+                      <td>jhondoe@dummy.com</td>
+                      <td>worker</td>
+                      <td>Activel<button class="toggle_active" onclick="openConfirmation()">Deactivate</button></td>
+                  </tr>
+                  <a href="apple">
+                      <tr class='clickable-row' data-href='url://'>
+                          <td>1</td>
+                          <td>123456789</td>
+                          <td><a href="profile.html">John Doe</a></td>
+                          <td>California</td>
+                          <td>Los Angeles</td>
+                          <td>1234 Main St</td>
+                          <td>123-456-7890</td>
+                          <td>jhondoe@dummy.com</td>
+                          <td>worker</td>
+                          <td>Active<button class="toggle_active" onclick="openConfirmation()">Deactivate</button></td>
+                      </tr>
+                  </a>
+                  <a href="">
+                      <tr class='inactive' data-href='url://'>
+                          <td>1</td>
+                          <td>123456789</td>
+                          <td><a href="profile.html">John Doe</a></td>
+                          <td>California</td>
+                          <td>Los Angeles</td>
+                          <td>1234 Main St</td>
+                          <td>123-456-7890</td>
+                          <td>jhondoe@dummy.com</td>
+                          <td>worker</td>
+                          <td>Inactive<button class="toggle_active">Activate</button></td>
+                      </tr>
+                  </a>
+                  <a>
+                      <tr class='inactive' data-href='url://'>
+                          <td>1</td>
+                          <td>123456789</td>
+                          <td><a href="profile.html">John Doe</a></td>
+                          <td>California</td>
+                          <td>Los Angeles</td>
+                          <td>1234 Main St</td>
+                          <td>123-456-7890</td>
+                          <td>jhondoe@dummy.com</td>
+                          <td>worker</td>
+                          <td>Inactive<button class="toggle_active">Activate</button></td>
+                      </tr>
+                  </a>
+                  <a href="">
+                      <tr class='clickable-row' data-href='url://'>
+                          <td>1a</td>
+                          <td>123456789</td>
+                          <td><a href="profile.html">John Doe</a></td>
+                          <td>California</td>
+                          <td>Los Angeles</td>
+                          <td>1234 Main St</td>
+                          <td>123-456-7890</td>
+                          <td>jhondoe@dummy.com</td>
+                          <td>worker</td>
+                          <td>Active<button class="toggle_active" onclick="openConfirmation()">Deactivate</button></td>
+                      </tr>
+                  </a>
+      
+      
+      
+              </table>
+          </div>
+      
+      
+          <div class="responsive">
+      
+       
+              <div class="member_detail_wrapper">
+                  <div class="member_detail_header">
+                      <h5>Member Id</h5>
+                      <h5>Barcode Id</h5>
+                      <h5>Name</h5>
+                      <h5>State</h5>
+                      <h5>City</h5>
+                      <h5>Street</h5>
+                      <h5>Phone #</h5>
+                      <h5>Email</h5>
+                      <h5>Tag</h5>
+                      <h5>Status</h5>
+                  </div>
+                  <div class="member_detail_body">
+                      <h5>1</h5>
+                      <h5>123456789</h5>
+                      <h5>John Doe</h5>
+                      <h5>California</h5>
+                      <h5>Los Angeles</h5>
+                      <h5>1234 Main St</h5>
+                      <h5>123-456-7890</h5>
+                      <h5>jhondoe@dummy.com</h5>
+                      <h5>worker</h5>
+                      <h5>Active<button class="toggle_active" onclick="openConfirmation()">Deactivate</button></h5>
+      
+                  </div>
+      
+      
+              </div>
+              <div class="member_detail_wrapper">
+                  <div class="member_detail_header">
+                      <h5>Member Id</h5>
+                      <h5>Barcode Id</h5>
+                      <h5>Name</h5>
+                      <h5>State</h5>
+                      <h5>City</h5>
+                      <h5>Street</h5>
+                      <h5>Phone #</h5>
+                      <h5>Email</h5>
+                      <h5>Tag</h5>
+                      <h5>Status</h5>
+                  </div>
+                  <div class="member_detail_body">
+                      <h5>1</h5>
+                      <h5>123456789</h5>
+                      <h5>John Doe</h5>
+                      <h5>California</h5>
+                      <h5>Los Angeles</h5>
+                      <h5>1234 Main St</h5>
+                      <h5>123-456-7890</h5>
+                      <h5>jhondoe@dummy.com</h5>
+                      <h5>worker</h5>
+                      <h5>Active<button class="toggle_active" onclick="openConfirmation()">Deactivate</button></h5>
+      
+                  </div>
+      
+      
+              </div>
+              <div class="member_detail_wrapper">
+                  <div class="member_detail_header">
+                      <h5>Member Id</h5>
+                      <h5>Barcode Id</h5>
+                      <h5>Name</h5>
+                      <h5>State</h5>
+                      <h5>City</h5>
+                      <h5>Street</h5>
+                      <h5>Phone #</h5>
+                      <h5>Email</h5>
+                      <h5>Tag</h5>
+                      <h5>Status</h5>
+                  </div>
+                  <div class="member_detail_body">
+                      <h5>1</h5>
+                      <h5>123456789</h5>
+                      <h5>John Doe</h5>
+                      <h5>California</h5>
+                      <h5>Los Angeles</h5>
+                      <h5>1234 Main St</h5>
+                      <h5>123-456-7890</h5>
+                      <h5>jhondoe@dummy.com</h5>
+                      <h5>worker</h5>
+                      <h5>Active<button class="toggle_active" onclick="openConfirmation()">Deactivate</button></h5>
+      
+                  </div>
+      
+      
+              </div>
+              <div class="member_detail_wrapper">
+                  <div class="member_detail_header">
+                      <h5>Member Id</h5>
+                      <h5>Barcode Id</h5>
+                      <h5>Name</h5>
+                      <h5>State</h5>
+                      <h5>City</h5>
+                      <h5>Street</h5>
+                      <h5>Phone #</h5>
+                      <h5>Email</h5>
+                      <h5>Tag</h5>
+                      <h5>Status</h5>
+                  </div>
+                  <div class="member_detail_body">
+                      <h5>1</h5>
+                      <h5>123456789</h5>
+                      <h5>John Doe</h5>
+                      <h5>California</h5>
+                      <h5>Los Angeles</h5>
+                      <h5>1234 Main St</h5>
+                      <h5>123-456-7890</h5>
+                      <h5>jhondoe@dummy.com</h5>
+                      <h5>worker</h5>
+                      <h5>Active<button class="toggle_active" onclick="openConfirmation()">Deactivate</button></h5>
+      
+                  </div>
+      
+      
+              </div>
+              <div class="member_detail_wrapper">
+                  <div class="member_detail_header">
+                      <h5>Member Id</h5>
+                      <h5>Barcode Id</h5>
+                      <h5>Name</h5>
+                      <h5>State</h5>
+                      <h5>City</h5>
+                      <h5>Street</h5>
+                      <h5>Phone #</h5>
+                      <h5>Email</h5>
+                      <h5>Tag</h5>
+                      <h5>Status</h5>
+                  </div>
+                  <div class="member_detail_body">
+                      <h5>1</h5>
+                      <h5>123456789</h5>
+                      <h5>John Doe</h5>
+                      <h5>California</h5>
+                      <h5>Los Angeles</h5>
+                      <h5>1234 Main St</h5>
+                      <h5>123-456-7890</h5>
+                      <h5>jhondoe@dummy.com</h5>
+                      <h5>worker</h5>
+                      <h5>Active<button class="toggle_active" onclick="openConfirmation()">Deactivate</button></h5>
+      
+                  </div>
+      
+      
+              </div>
+              <div class="member_detail_wrapper">
+                  <div class="member_detail_header">
+                      <h5>Member Id</h5>
+                      <h5>Barcode Id</h5>
+                      <h5>Name</h5>
+                      <h5>State</h5>
+                      <h5>City</h5>
+                      <h5>Street</h5>
+                      <h5>Phone #</h5>
+                      <h5>Email</h5>
+                      <h5>Tag</h5>
+                      <h5>Status</h5>
+                  </div>
+                  <div class="member_detail_body">
+                      <h5>1</h5>
+                      <h5>123456789</h5>
+                      <h5>John Doe</h5>
+                      <h5>California</h5>
+                      <h5>Los Angeles</h5>
+                      <h5>1234 Main St</h5>
+                      <h5>123-456-7890</h5>
+                      <h5>jhondoe@dummy.com</h5>
+                      <h5>worker</h5>
+                      <h5>Active<button class="toggle_active" onclick="openConfirmation()">Deactivate</button></h5>
+      
+                  </div>
+      
+      
+              </div>
+              <div class="member_detail_wrapper">
+                  <div class="member_detail_header">
+                      <h5>Member Id</h5>
+                      <h5>Barcode Id</h5>
+                      <h5>Name</h5>
+                      <h5>State</h5>
+                      <h5>City</h5>
+                      <h5>Street</h5>
+                      <h5>Phone #</h5>
+                      <h5>Email</h5>
+                      <h5>Tag</h5>
+                      <h5>Status</h5>
+                  </div>
+                  <div class="member_detail_body">
+                      <h5>1</h5>
+                      <h5>123456789</h5>
+                      <h5>John Doe</h5>
+                      <h5>California</h5>
+                      <h5>Los Angeles</h5>
+                      <h5>1234 Main St</h5>
+                      <h5>123-456-7890</h5>
+                      <h5>jhondoe@dummy.com</h5>
+                      <h5>worker</h5>
+                      <h5>Active<button class="toggle_active" onclick="openConfirmation()">Deactivate</button></h5>
+      
+                  </div>
+      
+      
+              </div>
+          </div>
+      
+      
+      
+          <!-- popups -->
+      
+      
+          <div id="confirmation_wrapper">
+              <div id="confirmation">
+                  <h1>Alert!</h1>
+                  <h3>Are you sure you want to <span>Deactivate</span> this member?</h3>
+                  <div class="button_container">
+                      <button type="button" id="confirm">Confirm</button>
+                      <button type="button" id="cancel" onclick="closeConfirmation()">Cancel</button>
+                  </div>
+              </div>
+          </div>
+      
+      
+          <form action="">
+      
+      
+              <div id="add_person_wrapper">
+                  <div id="add_person">
+                      <h1>Add Person</h1>
+                      <label class="required" for="Type" >Type</label>
+                      <select name="Type" id="Type" required>
+                          <option value="">--select--</option>
+                          <option value="worker">Worker</option>
+                          <option value="visitor">Visitor</option>
+                      </select>
+                      <label class="required" for="Name">Name</label>
+      
+                      <div id="span_horizontal">
+                          <input type="text" name="first_name" id="Name" placeholder="First Name" required>
+                          <input type="text" name="last_name" id="Name" placeholder="Last Name (optional)">
+                      </div>
+      
+                      <div id="span_horizontal">
+                          <div id="span_vertical">
+                              <label class="required" for="gender">Gender</label>
+                              <select name="gender" id="gender" required>
+                                  <option value="">--select--</option>
+                                  <option value="male">Male</option>
+                                  <option value="female">Female</option>
+                              </select>
+                          </div>
+                          <div id="span_vertical">
+                              <label class="required" for="age">Age</label>
+                              <input type="number" name="age" id="age" placeholder="Age" required>
+                          </div>
+                      </div>
+      
+                      <div id="span_horizontal">
+                          <div id="span_vertical">
+                              <label class="required" for="birth_day">Birth Date</label>
+                              <input type="date" name="birth_day" id="birth_day" required>
+                          </div>
+                          <div id="span_vertical">
+                              <label class="required" for="Join_date">Joining Date</label>
+                              <input type="date" name="Join_date" id="Join_date"  required>
+                          </div>
+                      </div>
+      
+      
+                      <label class="required" for="address">Address</label>
+                      <div id="span_horizontal">
+                          <select name="state" id="state" required>
+                              <option value="">--State--</option>
+                              <option value="CA">California</option>
+                              <option value="NY">New York</option>
+                              <option value="NY">New York</option>
+                              <option value="NY">New York</option>
+                              <option value="NY">New York</option>
+                              <option value="NY">New York</option>
+                              <option value="NY">New York</option>
+                              <option value="NY">New York</option>
+      
+                          </select>
+                          <input type="text" name="city" id="address" placeholder="City" required>
+                          <input type="text" name="street" id="address" placeholder="Street (optional)">
+                      </div>
+      
+                      <div id="span_horizontal">
+                          <div id="span_vertical">
+                              <label class="required" for="phone">Phone</label>
+                              <input type="tel" name="phone" id="phone" required>
+                          </div>
+                          <div id="span_vertical">
+                              <label class="required" for="email" class="required">Email</label>
+                              <input type="email" name="email" id="email1" required>
+                          </div>
+                      </div>
+      
+                      <div id="span_horizontal">
+                          <div class="face_preview">
+                              <input type="image" required id="input_image_preview">
+                              <button type="button" onclick="openFaceScanner()">Capture Face</button>
+                          <div id="text_add">
+                              <p id="text_add_p">Please Capture A Image</p>
+                          </div>
+      
+                              <div class="face_scanner_wrapper" id="face_scanner_wrapper">
+                                  <div class="face_scanner" id="face_scanner">
+      
+                                      <div id="horizontal">
+                                          <div class="scan_preview_containers">
+                                              <button type="button" id="start-camera">Start Camera</button>
+                                              <video id="video" width="320" height="240" autoplay></video>
+                                          </div>
+          
+                                          <div class="scan_preview_containers">
+                                              <button type="button" id="click-photo">Click Photo</button>
+                                              <canvas id="canvas" width="320" height="240"></canvas>
+                                          </div>
+      
+                                      </div>
+      
+      
+                                      
+                                      
+                                      
+      
+                                      <script>
+        
+                                          let camera_button = document.querySelector("#start-camera");
+                                          let video = document.querySelector("#video");
+                                          let click_button = document.querySelector("#click-photo");
+                                          let canvas = document.querySelector("#canvas");
+                                          
+                                          camera_button.addEventListener('click', async function() {
+                                              video.style.backgroundColor = "#00000050";
+                                              let stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                                              video.srcObject = stream;
+      
+                                          });
+                                          
+                                          click_button.addEventListener('click', function() {
+                                                 canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
+                                                 let image_data_url = canvas.toDataURL('image/jpeg');
+                                          
+                                                 // data url of the image
+                                                 console.log(image_data_url);
+                                          });
+      
+                                          function enableclickphoto() {
+                                              document.getElementById("click-photo").disabled = false;
+                                          }
+      
+                                          function enablesavephoto() {
+                                              document.getElementById("save-photo").disabled = false;
+                                          }
+                                          
+                                          </script>
+                                          
+                                          <div class="button_container">
+      
+                                              <button id="set_image" type="button" onclick="saveImage()" >Save Image</button>
+                                              <button id="set_image" class="red" type="button" onclick="closeFaceScanner()">Close</button>
+      
+                                              <script>
+                                                var  face_scanner = document.getElementById("face_scanner")
+                                                  var  face_scanner_wrapper = document.getElementById("face_scanner_wrapper")
+      
+                                                  function closeFaceScanner(){
+                                                      face_scanner_wrapper.style.display = "none";
+                                                  }
+      
+                                                  function openFaceScanner(){
+                                                      face_scanner_wrapper.style.display = "flex";
+                                                  }
+      
+                                                  function saveImage(){
+                                                      document.getElementById("input_image_preview").src = document.getElementById("canvas").toDataURL('image/jpeg');
+                                                      closeFaceScanner();
+                                                      document.getElementById("input_image_preview").style.display = "block";
+                                                  }
+      
+                                                  function checkimage(){
+                                                      
+                                                      input_image = document.getElementById("input_image_preview").src
+                                                      if (input_image == ""){
+                                                          document.getElementById("text_add").style.display = "block";
+                                                          document.getElementById("add_btn").type = "button";
+                                                          alert("Please capture your face")
+                                                          return false;
+                                                      }
+                                                      else{
+                                                          document.getElementById("add_btn").type = "submit";
+                                                          return true;
+                                                      }
+                                                  }
+                                                  
+                                                  document.getElementById("text_add").style.display = "none";
+                                              </script>
+                                          </div>
+      
+                                  </div>
+                              </div>
+      
+                          </div>
+                          <div class="finger_preview">
+                              <img src="" alt="finger_preview" id="capture">
+                              <button type="button"> Capture Finger</button>
+                          </div>
+                      </div>
+      
+      
+                      <div id="span_horizontal">
+                          <button type="submit" class="capture" id="add_btn" onclick="checkimage()">Add</button>
+                          <button type="button" class="capture" onclick="closeAddPerson()">Cancel</button>
+                      </div>
+      
+      
+                  </div>
+              </div>
+      
+      
+          </form>
+      
+      
+      
+      
+      
+      
+          <script>
+      
+              jQuery(document).ready(function ($) {
+                  $('*[data-href]').on('click', function () {
+                      window.location = $(this).data("href");
+                  });
+              });
+      
+          </script>
+      
+          <script>
+              function openConfirmation() {
+                  document.getElementById("confirmation_wrapper").style.display = "flex";
+              }
+      
+              function closeConfirmation() {
+                  document.getElementById("confirmation_wrapper").style.display = "none";
+              }
+      
+      
+              function openAddPerson() {
+                  document.getElementById("add_person_wrapper").style.display = "flex";
+              }
+      
+              function closeAddPerson() {
+                  document.getElementById("add_person_wrapper").style.display = "none";
+              }
+      
+          </script>
+      
+      
+      
+
+
+
+      </div>
+    </div>
+
+    <script>
+
+      const date = new Date();
+      document.getElementById("date").innerHTML = date;
+    </script>
+
+    <script>
+      $(function () {
+        var current = location.pathname;
+        $('nav ul li a').each(function () {
+          var $this = $(this);
+          // if the current path is like this link, make it active
+          if ($this.attr('href').indexOf(current) != -1) {
+            $this.addClass('active');
+          }
+        })
+      })
+
+   
+
+
+    </script>
+
+
+<script>
+    document.getElementById("people_link").classList.add("active");
+</script>
+
+
+
+
+
+</body>
+
+</html>
